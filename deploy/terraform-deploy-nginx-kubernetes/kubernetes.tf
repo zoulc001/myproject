@@ -67,7 +67,7 @@ resource "kubernetes_deployment" "nginx" {
       }
       spec {
         container {
-          image = "929442595946.dkr.ecr.ap-southeast-1.amazonaws.com/myrepe/nginx_webapp:1.26"
+          image = "929442595946.dkr.ecr.ap-southeast-1.amazonaws.com/nginx_webapp:1.26"
           name  = "example"
 
           port {
