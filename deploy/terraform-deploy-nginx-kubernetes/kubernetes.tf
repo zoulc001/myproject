@@ -46,9 +46,9 @@ provider "kubernetes" {
 
 resource "kubernetes_deployment" "nginx" {
   metadata {
-    name = "scalable-nginx-example"
+    name = "scalable-nginx"
     labels = {
-      App = "ScalableNginxExample"
+      App = "ScalableNginx"
     }
   }
 
@@ -56,19 +56,19 @@ resource "kubernetes_deployment" "nginx" {
     replicas = 2
     selector {
       match_labels = {
-        App = "ScalableNginxExample"
+        App = "ScalableNginx"
       }
     }
     template {
       metadata {
         labels = {
-          App = "ScalableNginxExample"
+          App = "ScalableNginx"
         }
       }
       spec {
         container {
-          image = "929442595946.dkr.ecr.ap-southeast-1.amazonaws.com/nginx_webapp:1.26"
-          name  = "example"
+          image = "929442595946.dkr.ecr.ap-southeast-1.amazonaws.com/nginx_webapp:REPLACE_TAG"
+          name  = "demo"
 
           port {
             container_port = 80
@@ -92,7 +92,7 @@ resource "kubernetes_deployment" "nginx" {
 
 resource "kubernetes_service" "nginx" {
   metadata {
-    name = "nginx-example"
+    name = "nginx-demo"
   }
   spec {
     selector = {
