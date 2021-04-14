@@ -7,13 +7,17 @@ def get_lbs_address():
         state_file.close()
         lbs_url=re.search("\"value\":.*\"(\S*\.\S*\.\S*\.\S*\.\S*)\"",content).group(1)
         return "http://"+lbs_url
-    except:
+    except Exception,e:
+        print(str(e))
         return False
 def get_lbs_content():
     lbs_address=get_lbs_address()
     if lbs_address:
-        res=requests.get(lbs_address)
-        return res.text
+        try:
+            res=requests.get(lbs_address)
+            return res.text
+        except Exception,e:
+            print(str(e))
     return False
 if __name__=="__main__":
-    print get_lbs_content()
+    print(get_lbs_content())
