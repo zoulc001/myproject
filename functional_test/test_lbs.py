@@ -18,6 +18,6 @@ def get_lbs_content():
             return res.text
         except Exception,e:
             print(str(e))
-    return False
+    return ""
 if __name__=="__main__":
     print(get_lbs_content())
